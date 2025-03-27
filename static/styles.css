@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body,html{
+    width: 100%;
+    height: 100vh;
+    background-color: #232323;
+}
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    color: transparent;
+    font-size: 2rem;
+    margin-bottom: -10px;
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(45deg, #e8e048, #ffffff);
+    background-clip: text;
+}
+
+form{
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    background-color: #363535;
+    box-shadow: 0 0 40px rgba(162, 162, 162, 0.8);
+    border-radius: 2cap;
+    
+}
+form > input{
+    width: 90%;
+    padding: 7px;
+    margin-right: 9%;
+    background-color: #363535;
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    
+}
+
+form > button{
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+    size: 24px;
+    margin-left: 95%;
+    background-color: white;
+    border-radius: 100%;
+    transition: none;
+    outline: none;
+    animation: shadow 1s alternate-reverse infinite;
+    cursor: pointer;
+}
+form > button > svg {
+    size: 24px;
+}
+header{
+    width: 100%;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    position: sticky;
+    top: 0;
+    background-color: #232323;
+    
+}
+header > a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@keyframes shadow{
+    0%{
+        box-shadow: 0 0 10px yellow;
+    }
+    25%{
+        box-shadow: 0 0 15px yellow;
+    }
+    50%{
+        box-shadow: 0 0 20px yellow;
+    }
+    75%{
+        box-shadow: 0 0 30px yellow;
+    }
+    100%{
+        box-shadow: 0 0 35px yellow;
+    }
+}
+
+#info {
+    width: 90%;
+    height: fit-content;
+    max-width: 1000px;
+    margin-top: 32px;
+    padding: 20px;
+    background-color: #232323;
+    color: white;
+    border: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transform: translateY(100%);
+}
+
+h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
