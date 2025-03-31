@@ -13,8 +13,6 @@ if not GOOGLE_API_KEY:
     raise ValueError("Please set the GOOGLE_API_KEY environment variable.")
 
 genai.configure(api_key=GOOGLE_API_KEY)
-
-# Select the Gemini model
 model = genai.GenerativeModel('gemini-1.5-pro')
 
 
@@ -31,7 +29,6 @@ def check_symptoms():
     """
     symptoms = request.form['symptoms']
 
-    # Construct the prompt for the Gemini API
     prompt = f"""
     You are a helpful AI assistant specializing in providing preliminary information about potential health conditions based on provided symptoms. 
     However, you are NOT a substitute for a medical professional. Always advise users to consult with a doctor for diagnosis and treatment.
@@ -51,15 +48,15 @@ def check_symptoms():
 
     try:
         response = model.generate_content(prompt)
-        ai_response = response.text  # Extract the text from the response
+        ai_response = response.text  
 
         return jsonify({'result': ai_response})
 
     except Exception as e:
         print(f"Error communicating with Gemini API: {e}")
-        return jsonify({'error': str(e)}), 500  # Return error status code
+        return jsonify({'error': str(e)}), 500  
 
 
 if __name__ == '__main__':
-    app.run(debug=True) #  DO NOT USE debug=True in production!
+    app.run(debug=True) 
 
