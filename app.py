@@ -18,33 +18,30 @@ model = genai.GenerativeModel('gemini-1.5-pro')
 
 @app.route('/')
 def index():
-    """Renders the main page with the symptom checker form."""
     return render_template('index.html')
 
 
 @app.route('/check_symptoms', methods=['POST'])
 def check_symptoms():
-    """
-    Receives symptom input from the user, queries the Gemini API, and returns the response.
-    """
+ 
     symptoms = request.form['symptoms']
 
-    prompt = f"""
-    You are a helpful AI assistant specializing in providing preliminary information about potential health conditions based on provided symptoms. 
-    However, you are NOT a substitute for a medical professional. Always advise users to consult with a doctor for diagnosis and treatment.
-
-    Based on the following symptoms: {symptoms}
-
-    Provide potential causes (health conditions) that could be associated with the given symptoms. 
-    Do not provide specific medical advice or prescribe treatments.
-    also dont provide any disclaimers or warnings. Just provide the list of potential causes.
-    and yes, you can use the internet to find the most relevant and up-to-date information.
-    Please provide the response in a simple and clear format, such as a numbered list or bullet points.
-    and classify the content
-    and use only one * for headings
-    and if the {symptoms} is empty, just say "No symptoms provided".
-    and if the {symptoms} is invalid, just say "Invalid symptoms provided".
-    """
+    if not symptoms.strip():
+        prompt = "No symptoms provided."
+    else:
+        prompt = f"""
+        You are an AI assistant trained to provide preliminary insights into potential health conditions based on symptoms provided by users. 
+        Your role is to analyze the symptoms and suggest possible causes in a concise and clear manner. 
+        Ensure the response is formatted as a numbered list or bullet points, and classify the content under relevant headings.
+       
+        Symptoms provided: {symptoms}
+        and use * only for heading and that too only one at the start of the response.
+        and use numbers  only for bullet points.dont give any disclaimers or warnings.
+        If the symptoms are invalid or nonsensical, respond with "Invalid symptoms provided."
+        if the symptoms are empty, don't offer some general health advice
+        just, respond with "No symptoms provided." 
+        Otherwise, provide a list of potential causes based on the symptoms.
+        """
 
     try:
         response = model.generate_content(prompt)
