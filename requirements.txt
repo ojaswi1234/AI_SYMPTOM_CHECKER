@@ -2,4 +2,5 @@ flask
 python-dotenv
 google-generativeai
 os
+waitress
 gunicorn
