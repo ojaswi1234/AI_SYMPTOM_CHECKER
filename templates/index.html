@@ -9,10 +9,10 @@
 
 <body>
     <header>
-        <svg aria-hidden="true" data-prefix="fas" data-icon="comments-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="svg-inline--fa fa-comments-alt fa-w-18 fa-7x" style="width: 28px; height: 28px; margin-left: 2%; background-color: transparent;">
-            <path fill="white" d="M416 224V64c0-35.3-28.7-64-64-64H64C28.7 0 0 28.7 0 64v160c0 35.3 28.7 64 64 64v54.2c0 8 9.1 12.6 15.5 7.8l82.8-62.1H352c35.3 0 64-28.6 64-63.9zm96-64h-64v64c0 52.9-43.1 96-96 96H192v64c0 35.3 28.7 64 64 64h125.7l82.8 62.1c6.4 4.8 15.5 0 15.5-7.8V448h32c35.3 0 64-28.7 64-64V224c0-35.3-28.7-64-64-64z"></path>
+        <svg aria-hidden="true" data-prefix="fas" data-icon="comments-alt" role="img" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 576 512" class="svg-inline--fa fa-comments-alt fa-w-18 fa-7x" style="width: 28px; height: 28px; margin-left: 2%; background-color: transparent;">
+            <path id="heading1" fill="white" d="M416 224V64c0-35.3-28.7-64-64-64H64C28.7 0 0 28.7 0 64v160c0 35.3 28.7 64 64 64v54.2c0 8 9.1 12.6 15.5 7.8l82.8-62.1H352c35.3 0 64-28.6 64-63.9zm96-64h-64v64c0 52.9-43.1 96-96 96H192v64c0 35.3 28.7 64 64 64h125.7l82.8 62.1c6.4 4.8 15.5 0 15.5-7.8V448h32c35.3 0 64-28.7 64-64V224c0-35.3-28.7-64-64-64z"></path>
         </svg>
-        <a href="/">AI Symptoms Checker</a>
+        <a href="/" id="heading2">AI Symptoms Checker</a>
     </header>
     <main>
         <h1>How can I Help You ?</h1>
@@ -45,6 +45,28 @@
                     document.getElementById('results').innerText = `Error: ${data.error}`;
                 }
             }
+
+            var inputField = document.getElementById('symptoms');
+            var a = document.getElementById('symptomForm');
+            var b = document.getElementById('heading1');
+            var c = document.getElementById('heading2');
+            function shadoweffects() {
+                inputField.addEventListener('focus', function() {
+                    a.style.boxShadow = "0 0 44px #e8e048";
+                    a.style.transition = "0.5s";
+                    a.style.border = "2px solid #e8e048";
+                    b.style.fill = "#e8e048";
+                    c.style.color = "#e8e048";
+                });
+                inputField.addEventListener('blur', function() {
+                    a.style.boxShadow = 'none';
+                    a.style.transition = "0.5s";
+                    a.style.border = "2px solid transparent";
+                    b.style.fill = "white";
+                    c.style.color = "white";
+                });
+            }
+            shadoweffects();
         </script>
     </main>
 </body>

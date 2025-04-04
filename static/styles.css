@@ -22,8 +22,7 @@ main{
 h1{
     transform: translateY(300%);
     color: transparent;
-    font-size: 2rem;
-    margin-bottom: -10px;
+    font-size: 2rem;;
     text-align: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(45deg, #e8e048, #ffffff);
@@ -41,26 +40,27 @@ form{
     align-items: center;
     margin-top: 200px;
     background-color: #363535;
-    box-shadow: 0 0 40px rgba(77, 75, 75, 0.95);
     border-radius: 2cap;
-    border: none;
+    
+    
 }
 form > input{
     width: 90%;
     padding: 7px;
     margin-right: 9%;
     background-color: #363535;
-    color: white;
+    color: #e8e048;
     outline: none;
     border: none;
     font-size: 1rem;
     
 }
 
+
 form > button{
     width: 28px;
     height: 28px;
-    padding: 7px;
+    padding: 5px;
     size: 24px;
     margin-left: 95%;
     background-color: yellow;
