@@ -41,6 +41,7 @@ form {
     margin-top: 200px;
     background-color: #363535;
     border-radius: 2cap;
+    border: 2px solid transparent;
 }
 
 form > input {
