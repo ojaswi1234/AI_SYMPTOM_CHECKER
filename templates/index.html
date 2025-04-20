@@ -6,68 +6,178 @@
     <title>AI Symptom Checker</title>
     <link rel="stylesheet" href="../static/styles.css">
 </head>
-
 <body>
     <header>
-        <svg aria-hidden="true" data-prefix="fas" data-icon="comments-alt" role="img" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 576 512" class="svg-inline--fa fa-comments-alt fa-w-18 fa-7x" style="width: 28px; height: 28px; margin-left: 2%; background-color: transparent;">
-            <path id="heading1" fill="white" d="M416 224V64c0-35.3-28.7-64-64-64H64C28.7 0 0 28.7 0 64v160c0 35.3 28.7 64 64 64v54.2c0 8 9.1 12.6 15.5 7.8l82.8-62.1H352c35.3 0 64-28.6 64-63.9zm96-64h-64v64c0 52.9-43.1 96-96 96H192v64c0 35.3 28.7 64 64 64h125.7l82.8 62.1c6.4 4.8 15.5 0 15.5-7.8V448h32c35.3 0 64-28.7 64-64V224c0-35.3-28.7-64-64-64z"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="width: 28px; height: 28px; margin-left: 2%;">
+            <path fill="white" d="M416 224V64c0-35.3-28.7-64-64-64H64C28.7 0 0 28.7 0 64v160c0 35.3 28.7 64 64 64v54.2c0 8 9.1 12.6 15.5 7.8l82.8-62.1H352c35.3 0 64-28.6 64-63.9zM512 160h-64v64c0 52.9-43.1 96-96 96H192v64c0 35.3 28.7 64 64 64h125.7l82.8 62.1c6.4 4.8 15.5 0 15.5-7.8V448h32c35.3 0 64-28.7 64-64V224c0-35.3-28.7-64-64-64z"/>
         </svg>
-        <a href="/" id="heading2">AI Symptoms Checker</a>
+        <a href="/">AI Symptoms Checker</a>
     </header>
     <main>
-        <h1>How can I Help You ?</h1>
+        <h1 id="heading1">How can I Help You ?</h1>
         <form id="symptomForm">
             <input type="text" id="symptoms" placeholder="Enter your Symptoms" name="symptoms" required>
-            <button type="button" onclick="checkSymptoms()">
+            <button type="button" id="checkSymptomsBtn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 32px; height: 32px;">
-                    <path d="M184 0c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56-56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z"></path>
+                    <path d="M184 0c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.4-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z"/>
                 </svg>
             </button>
         </form>
+        <button id="findFacilitiesBtn" style="display: none;">Find Nearby Medical Facilities</button>
         <div id="results"></div>
+        <div id="facilities"></div>
         <script>
+            const symptomForm = document.getElementById('symptomForm');
+            const symptomsInput = document.getElementById('symptoms');
+            const checkSymptomsBtn = document.getElementById('checkSymptomsBtn');
+            const facilitiesButton = document.getElementById('findFacilitiesBtn');
+            const resultsDiv = document.getElementById('results');
+            const facilitiesDiv = document.getElementById('facilities');
+            const heading = document.getElementById('heading1');
+            const svgIcon = symptomForm.querySelector('svg');
+            const EMERGENCY_KEYWORDS = [
+                "life threatening",
+                "seek immediate medical attention",
+                "call emergency services",
+                "urgent medical care",
+                "immediately seek medical advice",
+                "consult a doctor"
+            ];
             async function checkSymptoms() {
-                const symptoms = document.getElementById('symptoms').value;
-    
-                const formData = new FormData();
-                formData.append('symptoms', symptoms);
-    
-                const response = await fetch('/check_symptoms', {
-                    method: 'POST',
-                    body: formData
-                });
-    
-                const data = await response.json();
-    
-                if (response.ok) {
-                    document.getElementById('results').innerText = data.result;
-                } else {
-                    document.getElementById('results').innerText = `Error: ${data.error}`;
+                const symptoms = symptomsInput.value.trim();
+                if (!symptoms) {
+                    resultsDiv.innerText = 'Please enter symptoms.';
+                    return;
+                }
+                facilitiesButton.style.display = 'none';
+                try {
+                    const formData = new FormData();
+                    formData.append('symptoms', symptoms);
+                    const response = await fetch('/check_symptoms', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await response.json();
+                    if (response.ok) {
+                        resultsDiv.innerText = data.result;
+                        const responseText = data.result.toLowerCase();
+                        const hasEmergencyKeyword = EMERGENCY_KEYWORDS.some(keyword =>
+                            responseText.includes(keyword.toLowerCase())
+                        );
+                        if (hasEmergencyKeyword) {
+                            facilitiesButton.style.display = 'block';
+                        }
+                        if (data.emergency) {
+                            alert('This situation might be life-threatening. Please seek immediate medical attention.');
+                        }
+                    } else {
+                        resultsDiv.innerText = `Error: ${data.error}`;
+                    }
+                } catch (error) {
+                    resultsDiv.innerText = 'Error: Failed to connect to the server.';
+                    console.error('Error:', error);
                 }
             }
-
-            var inputField = document.getElementById('symptoms');
-            var a = document.getElementById('symptomForm');
-            var b = document.getElementById('heading1');
-            var c = document.getElementById('heading2');
-            function shadoweffects() {
-                inputField.addEventListener('focus', function() {
-                    a.style.boxShadow = "0 0 44px #e8e048";
-                    a.style.transition = "0.5s";
-                    a.style.border = "2px solid #e8e048";
-                    b.style.fill = "#e8e048";
-                    c.style.color = "#e8e048";
+            async function findNearbyFacilities() {
+                if (!navigator.geolocation) {
+                    facilitiesDiv.innerText = 'Geolocation is not supported by your browser.';
+                    return;
+                }
+                navigator.geolocation.getCurrentPosition(
+                    async (position) => {
+                        const { latitude, longitude } = position.coords;
+                        const apiKey = '{{ geoapify_api_key }}';
+                        const url = `https://api.geoapify.com/v2/places?categories=healthcare&filter=circle:${longitude},${latitude},5000&limit=5&apiKey=${apiKey}`;
+                        try {
+                            const response = await fetch(url);
+                            const data = await response.json();
+                            if (data.features?.length > 0) {
+                                let html = '<h2>Nearby Medical Facilities</h2><ul>';
+                                data.features.forEach((place) => {
+                                    const { name = 'Unnamed Medical Facility', formatted: address = 'Address not available' } = place.properties;
+                                    const mapsLink = address !== 'Address not available'
+                                        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
+                                        : '#';
+                                    html += `
+                                        <li>
+                                            <strong>${name}</strong><br>
+                                            Address: ${address}<br>
+                                            <a href="${mapsLink}" target="_blank">View on Google Maps</a>
+                                        </li>
+                                    `;
+                                });
+                                html += '</ul>';
+                                facilitiesDiv.innerHTML = html;
+                            } else {
+                                facilitiesDiv.innerText = 'No medical facilities found nearby.';
+                            }
+                        } catch (error) {
+                            facilitiesDiv.innerText = 'Error fetching medical facilities.';
+                            console.error('Error:', error);
+                        }
+                    },
+                    () => {
+                        facilitiesDiv.innerText = 'Unable to retrieve your location. Please allow location access.';
+                    }
+                );
+            }
+            function applyShadowEffects() {
+                symptomsInput.addEventListener('focus', () => {
+                    symptomForm.style.boxShadow = '0 0 44px #e8e048';
+                    symptomForm.style.transition = '0.5s';
+                    symptomForm.style.border = '2px solid #e8e048';
+                    svgIcon.style.fill = 'black';
+                    heading.style.color = '#e8e048';
                 });
-                inputField.addEventListener('blur', function() {
-                    a.style.boxShadow = 'none';
-                    a.style.transition = "0.5s";
-                    a.style.border = "2px solid transparent";
-                    b.style.fill = "white";
-                    c.style.color = "white";
+                symptomsInput.addEventListener('blur', () => {
+                    symptomForm.style.boxShadow = 'none';
+                    symptomForm.style.transition = '0.5s';
+                    symptomForm.style.border = '2px solid transparent';
+                    svgIcon.style.fill = 'gray';
+                    heading.style.color = 'white';
                 });
             }
-            shadoweffects();
+            function initialize() {
+                checkSymptomsBtn.addEventListener('click', checkSymptoms);
+                facilitiesButton.addEventListener('click', findNearbyFacilities);
+                applyShadowEffects();
+            }
+            document.addEventListener('DOMContentLoaded', initialize);
         </script>
-    </main>
-</body>
+        <script>
+            (function initializeCloudflareChallenge() {
+                function injectChallengeScript() {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    if (!iframeDoc) return;
+                    const script = iframeDoc.createElement('script');
+                    script.textContent = `
+                        window.__CF$cv$params = { r: '93335f17dc45bf73', t: 'MTc0NTEzODc4OS4wMDAwMDA=' };
+                        const script = document.createElement('script');
+                        script.nonce = '';
+                        script.src = '/cdn-cgi/challenge-platform/scripts/jsd/main.js';
+                        document.getElementsByTagName('head')[0].appendChild(script);
+                    `;
+                    iframeDoc.head.appendChild(script);
+                }
+                const iframe = document.createElement('iframe');
+                Object.assign(iframe.style, {
+                    position: 'absolute',
+                    top: '0',
+                    left: '0',
+                    border: 'none',
+                    visibility: 'hidden',
+                    height: '1px',
+                    width: '1px'
+                });
+                if (document.body) {
+                    document.body.appendChild(iframe);
+                    if (document.readyState !== 'loading') {
+                        injectChallengeScript();
+                    } else {
+                        document.addEventListener('DOMContentLoaded', injectChallengeScript);
+                    }
+                }
+            })();
+        </script>
+    </body>
 </html>
