@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+from datetime import datetime
 
 app = Flask(__name__)
 load_dotenv()
@@ -35,10 +36,10 @@ def check_symptoms():
     symptoms = request.form['symptoms']
 
     if not symptoms.strip():
-        return jsonify({'error': 'No symptoms-provided.'}), 400
+        return jsonify({'error': 'No symptoms provided.'}), 400
 
     prompt = f"""
-     You are a medical AI that analyzes symptoms to suggest possible conditions, ordered by likelihood. If input is vague or invalid, respond: 'Please provide specific symptoms for accurate assessment.' Otherwise, list numbered possibilities (e.g., '1. Condition X – Brief advice; 2. Condition Y – Brief advice'). Use phrases like 'may suggest' or 'could indicate,' avoid disclaimers, and keep advice actionable (e.g., 'Rest if fatigued; see a doctor for persistent fever'). Never diagnose definitively. Example: '1. Dehydration – Drink fluids; 2. Migraine – Avoid triggers.' Respond only to health-related queries. Symptoms Provided: {symptoms}
+    You are a medical AI that analyzes symptoms to suggest possible conditions, ordered by likelihood. If input is vague or invalid, respond: 'Please provide specific symptoms for accurate assessment.' Otherwise, list numbered possibilities (e.g., '1. Condition X – Brief advice; 2. Condition Y – Brief advice'). Use phrases like 'may suggest' or 'could indicate,' avoid disclaimers, and keep advice actionable (e.g., 'Rest if fatigued; see a doctor for persistent fever'). Never diagnose definitively. Example: '1. Dehydration – Drink fluids; 2. Migraine – Avoid triggers.' Respond only to health-related queries. Symptoms Provided: {symptoms}
     """
 
     try:
@@ -47,7 +48,19 @@ def check_symptoms():
 
         is_emergency = any(keyword.lower() in ai_response.lower() for keyword in EMERGENCY_KEYWORDS)
 
-        return jsonify({'result': ai_response, 'emergency': is_emergency})
+        # Generate report data
+        report_data = {
+            'date': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'symptoms': symptoms,
+            'conditions': ai_response,
+            'emergency': "Yes" if is_emergency else "No"
+        }
+
+        return jsonify({
+            'result': ai_response,
+            'emergency': is_emergency,
+            'report_data': report_data
+        })
 
     except Exception as e:
         print(f"Error communicating with Gemini API: {e}")
