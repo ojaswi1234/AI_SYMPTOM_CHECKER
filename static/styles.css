@@ -176,7 +176,7 @@ button > svg{
     fill: black;
     transition: all 0.3s ease-in-out;
 }
-#reportModal {
+ #reportModal {
     display: none;
     position: fixed;
     top: 0;
@@ -190,30 +190,50 @@ button > svg{
 }
 #reportContainer {
     background: white;
-    border-radius: 10px;
+    border-radius: 8px;
     width: 90%;
     max-width: 600px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    font-family: Arial, sans-serif;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: 'Helvetica', Arial, sans-serif;
 }
 #reportContent h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 1.6em;
+    margin: 0 0 15px;
+    color: #1a3c5e;
+    border-bottom: 2px solid #1a3c5e;
+    padding-bottom: 5px;
+}
+#reportContent h3 {
+    font-size: 1.2em;
+    margin: 15px 0 10px;
     color: #333;
 }
 #reportContent p {
-    margin: 5px 0;
+    margin: 8px 0;
     font-size: 1em;
-    line-height: 1.5;
+    line-height: 1.6;
+    color: #333;
 }
 #reportContent strong {
-    font-weight: bold;
-    color: #555;
+    font-weight: 600;
+    color: #1a3c5e;
 }
 #reportContent em {
     font-style: italic;
-    color: #777;
+    color: #555;
+    font-size: 0.95em;
+}
+#reportContent ul {
+    margin: 10px 0 10px 20px;
+    padding: 0;
+    list-style-type: disc;
+}
+#reportContent li {
+    margin: 5px 0;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
 }
 #reportButtons {
     display: flex;
@@ -226,12 +246,13 @@ button > svg{
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
+    font-weight: 500;
 }
 #downloadReport {
-    background: #27ae60;
+    background: #1a3c5e;
     color: white;
 }
 #closeReport {
-    background: #c0392b;
+    background: #a31414;
     color: white;
 }
