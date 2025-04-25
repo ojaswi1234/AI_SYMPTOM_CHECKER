@@ -163,7 +163,6 @@
                                     <li>
                                         <strong>${name}</strong><br>
                                         Address: ${address}<br>
-                                        Type: ${operator_type}<br>
                                         <a href="${mapsLink}" target="_blank">View on Google Maps</a>
                                     </li>
                                 `;
@@ -187,7 +186,8 @@
         function applyShadowEffects() {
             symptomsInput.addEventListener('focus', () => {
                 symptomForm.style.boxShadow = '0 0 44px #e8e048';
-                symptomForm.style.transition = '0.5s';
+                symptomForm.style
+                .transition = '0.5s';
                 symptomForm.style.border = '2px solid #e8e048';
                 svgIcon.style.fill = 'black';
                 heading.style.color = '#e8e048';
